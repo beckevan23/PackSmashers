@@ -1,0 +1,154 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* General layout */
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  header,
+  footer {
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  header {
+    background-color: black;
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: black;
+    color: white;
+    text-shadow: cyan;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 1rem 0;
+    background-color: black;
+}
+  
+  nav .social-links {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 0 2rem;
+  }
+  
+  nav .social-links a {
+    display: inline-block;
+    text-decoration: none;
+    background-color: white;
+    color: black;
+    padding: 0.5rem;
+    border-radius: 5px;
+    box-shadow: -4px 0 magenta, 4px 0 cyan;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    margin: 0 0.5rem;
+  }
+  
+  nav .social-links a:hover {
+    background-color: white;
+    color: black;
+    box-shadow: -4px 0 cyan, 4px 0 magenta;
+    text-shadow: 1px 1px cyan;
+}
+
+main {
+  background-color: white;
+  padding: 2rem;
+  flex-grow: 1;
+}
+
+main h2 {
+  margin-bottom: 1.5rem;
+}
+
+main p {
+  font-size: 1.1rem;
+  text-align: justify;
+}
+
+@media (max-width: 768px) {
+  nav .social-links {
+    flex-direction: row;
+  }
+
+  nav .social-links a {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.stack {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.stack span {
+    font-weight: bold;
+    grid-row-start: 1;
+    grid-column-start: 1;
+    font-size: 4rem;
+    --stack-height: calc(100% / var(--stacks) - 1px);
+    --inverse-index: calc(calc(var(--stacks) - 1) - var(--index));
+    --clip-top: calc(var(--stack-height) * var(--index));
+    --clip-bottom: calc(var(--stack-height) * var(--inverse-index));
+    clip-path: inset(var(--clip-top) 0 var(--clip-bottom) 0);
+    animation: stack 340ms cubic-bezier(.46,.29,0,1.24) 1 backwards calc(var(--index) * 120ms), glitch 2s ease infinite 2s alternate-reverse;
+  }
+  
+  .stack span:nth-child(odd) { --glitch-translate: 8px; }
+  .stack span:nth-child(even) { --glitch-translate: -8px; }
+  
+  @keyframes stack {
+    0% {
+      opacity: 0;
+      transform: translateX(-50%);
+      text-shadow: -2px 3px 0 magenta, 2px -3px 0 cyan;
+    };
+    60% {
+      opacity: 0.5;
+      transform: translateX(50%);
+    }
+    80% {
+      transform: none;
+      opacity: 1;
+      text-shadow: 2px -3px 0 magenta, -2px 3px 0 cyan;
+    }
+    100% {
+      text-shadow: none;
+    }
+  }
+  
+  @keyframes glitch {
+    0% {
+      text-shadow: -2px 3px 0 magenta, 2px -3px 0 cyan;
+      transform: translate(var(--glitch-translate));
+    }
+    2% {
+      text-shadow: 2px -3px 0 magenta, -2px 3px 0 cyan;
+    }
+    4%, 100% {  
+      text-shadow: 1px 1px cyan; transform: none; 
+    }
+    6%, 8% {  
+      text-shadow: -1px -1px magenta; transform: none; 
+    }
+  }
