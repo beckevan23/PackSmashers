@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const contentSections = document.querySelectorAll(".content-section");
     let currentSection = 0;
     let isScrolling = false;
+    let touchStartY = 0;
   
     function setCurrentSection(index) {
       if (index < 0 || index >= contentSections.length) return;
@@ -32,10 +33,28 @@ document.addEventListener("DOMContentLoaded", function () {
         isScrolling = false;
       }, 1000);
     }
+
+    function onTouchStart(event) {
+        touchStartY = event.touches[0].clientY;
+      }
+    
+      function onTouchMove(event) {
+        const touchMoveY = event.touches[0].clientY;
+        const deltaY = touchStartY - touchMoveY;
+    
+        if (Math.abs(deltaY) < 100) return; // Add a threshold to avoid small swipes triggering the animation
+    
+        if (deltaY > 0) {
+          onScroll({ deltaY: 1 });
+        } else {
+          onScroll({ deltaY: -1 });
+        }
+      }
   
     setCurrentSection(0);
     content.addEventListener("wheel", onScroll);
-    document.addEventListener("touchmove", changeSection, { passive: false });
+    content.addEventListener("touchstart", onTouchStart);
+    content.addEventListener("touchmove", onTouchMove);
   });
   
   
