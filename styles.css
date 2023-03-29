@@ -85,7 +85,7 @@ main {
   right: 0;
   top: 0;
   bottom: 0;
-  background-image: url('pokemon.jpg'); /* Replace with your image URL */
+  /*background-image: url('pokemon.jpg');  Replace with your image URL */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
