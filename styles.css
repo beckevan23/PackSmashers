@@ -14,6 +14,11 @@
     min-height: 100vh;
   }
   
+  .calendar-container {
+    padding-top: 30px;
+    margin-top: 30px;
+  }
+
   header,
   footer {
     text-align: center;
@@ -27,7 +32,24 @@
     display: flex;
     flex-direction: column;
   }
+
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensures the header stays above other elements */
+  }
   
+  /* Add some padding to the top of the main content to prevent it from being hidden behind the fixed header */
+  main {
+    padding-top: 200px; /* Adjust this value according to the height of your header */
+  }
+  
+  .welcome {
+    padding-bottom: 15px;
+  }
+
   footer {
     text-align: center;
     padding: 1rem;
