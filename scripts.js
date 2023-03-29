@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
     setCurrentSection(0);
     content.addEventListener("wheel", onScroll);
+    document.addEventListener("touchmove", changeSection, { passive: false });
   });
   
   

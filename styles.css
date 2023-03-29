@@ -148,9 +148,13 @@ main p {
   text-align: justify;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   nav .social-links {
     flex-direction: row;
+  }
+
+  .content {
+    margin-top: calc(200px + 4rem); /* Adjust top margin for mobile */
   }
 
   nav .social-links a {
