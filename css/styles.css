@@ -62,7 +62,7 @@
     box-shadow: -1px -0.5px magenta, 3px 1px cyan;
     transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
     margin: 0 0.5rem;
-  }
+  } 
   
   nav .social-links a:hover {
     background-color: white;
