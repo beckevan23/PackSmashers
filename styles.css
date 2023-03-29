@@ -47,6 +47,7 @@
   nav .social-links {
     list-style-type: none;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     width: 100%;
     padding: 0 2rem;
